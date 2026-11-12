@@ -70,7 +70,7 @@ export const api = {
     await wait(); write('noted_users', read('noted_users', initialUsers).filter((user) => user.id !== id))
   },
   async getInterestGroups() {
-    if (!USE_MOCK) return request('/admin/interests/groups?page=1&limit=20')
+    if (!USE_MOCK) { const data = await request('/admin/interests/groups?page=1&limit=20'); return data.results }
     await wait(); const groups = {}; read('noted_users', initialUsers).forEach((user) => user.interests.forEach((interest) => { groups[interest] = [...(groups[interest] || []), user] })); return Object.entries(groups).map(([interest, users]) => ({ interest, count: users.length, users })).sort((a, b) => b.count - a.count)
   },
 }

@@ -6,7 +6,6 @@ import {
   Newspaper,
   Search,
   ShieldCheck,
-  Sparkles,
   Tags,
   Users,
   X,
